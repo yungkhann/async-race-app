@@ -7,14 +7,22 @@ interface GarageState {
   cars: Car[];
   selectedCar: Car | null;
   page: number;
-  loading: boolean;
+  totalCount: number;
+  carVelocities: { [id: number]: number };
+  carRaceStatus: { [id: number]: boolean };
+  carPositions: { [id: number]: number };
+  raceStarted: boolean;
 }
 
 const initialState: GarageState = {
   cars: [],
   selectedCar: null,
   page: 1,
-  loading: false,
+  totalCount: 0,
+  carVelocities: {},
+  carRaceStatus: {},
+  carPositions: {},
+  raceStarted: false,
 };
 
 const garageSlice = createSlice({
@@ -30,20 +38,45 @@ const garageSlice = createSlice({
     setSelectedCar(state, action: PayloadAction<Car | null>) {
       state.selectedCar = action.payload;
     },
+    setCarVelocities(state, action: PayloadAction<{ [id: number]: number }>) {
+      state.carVelocities = action.payload;
+    },
+    setCarRaceStatus(state, action: PayloadAction<{ [id: number]: boolean }>) {
+      state.carRaceStatus = action.payload;
+    },
+    setCarPositions(state, action: PayloadAction<{ [id: number]: number }>) {
+      state.carPositions = action.payload;
+    },
+    setRaceStarted(state, action: PayloadAction<boolean>) {
+      state.raceStarted = action.payload;
+    },
+    resetRaceState(state) {
+      state.carVelocities = {};
+      state.carRaceStatus = {};
+      state.carPositions = {};
+      state.raceStarted = false;
+    },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchCars.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(fetchCars.fulfilled, (state, action: PayloadAction<Car[]>) => {
-        state.cars = action.payload;
-        state.loading = false;
-      })
-      .addCase(fetchCars.rejected, (state) => {
-        state.loading = false;
-      });
+    builder.addCase(
+      fetchCars.fulfilled,
+      (state, action: PayloadAction<{ cars: Car[]; totalCount: number }>) => {
+        state.cars = action.payload.cars;
+        state.totalCount = action.payload.totalCount;
+      },
+    );
   },
 });
-export const { setCars, setPage, setSelectedCar } = garageSlice.actions;
+
+export const {
+  setCars,
+  setPage,
+  setSelectedCar,
+  setCarVelocities,
+  setCarRaceStatus,
+  setCarPositions,
+  setRaceStarted,
+  resetRaceState,
+} = garageSlice.actions;
+
 export default garageSlice.reducer;

@@ -1,11 +1,15 @@
-import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Garage from './pages/garage/Garage';
+import Winners from './pages/winners/Winners';
 
-function App() {
+const App = () => {
   return (
-    <>
-      <h1>Hello, this is my ASYNC RACE APP</h1>
-    </>
+    <Routes>
+      <Route path="/" element={<Navigate to="/garage" />} />
+      <Route path="/garage" element={<Garage />} />
+      <Route path="/winners" element={<Winners />} />
+    </Routes>
   );
-}
+};
 
 export default App;

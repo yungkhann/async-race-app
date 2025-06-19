@@ -6,8 +6,10 @@ export type Car = {
 
 export type Winner = {
   id: number;
+  name: string;
   wins: number;
   time: number;
+  color: string;
 };
 
 export type Database = {

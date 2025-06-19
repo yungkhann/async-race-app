@@ -1,4 +1,5 @@
 ✅ Feature Checklist (370 / 400)
+
 ✅ Commit Guidelines Compliance
 All commits follow consistent, clear naming with descriptive messages.
 
@@ -12,6 +13,7 @@ All features marked as complete, and score is listed at the top.
 The deployed link is listed at the top of the README.
 
 📁 Basic Structure (80 pts)
+
 ✅ Two Views: "Garage" and "Winners" (10 pts)
 
 ✅ Garage View contains: View title, car form, race controls, car list (30 pts)
@@ -23,6 +25,7 @@ The deployed link is listed at the top of the README.
 Subtotal: 80 / 80
 
 🚗 Garage View (90 pts)
+
 ✅ Car Creation/Editing/Deletion with validation (20 pts)
 
 ✅ Color Picker with RGB input reflected in car image (10 pts)
@@ -42,6 +45,7 @@ Subtotal: 80 / 80
 Subtotal: 90 / 90
 
 🏆 Winners View (50 pts)
+
 ✅ Display Winners after each race (15 pts)
 
 ✅ Pagination: 10 winners per page (10 pts)
@@ -53,6 +57,7 @@ Subtotal: 90 / 90
 Subtotal: 50 / 50
 
 🏁 Race Features (140 pts)
+
 ✅ Start Engine: Waits for velocity, animates, handles 500 errors (20 pts)
 
 ✅ Stop Engine: Returns car to starting position (20 pts)
@@ -70,6 +75,7 @@ Subtotal: 50 / 50
 Subtotal: 140 / 170
 
 🔧 Prettier and ESLint (10 pts)
+
 ✅ Prettier with format and ci:format scripts in package.json (5 pts)
 
 ✅ ESLint using Airbnb + strict TypeScript rules, lint script included (5 pts)
